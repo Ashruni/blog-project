@@ -1,6 +1,6 @@
 <x-layout>
     @include('_header-post')
-    <x-feature/>
+    <x-feature />
     <div class="lg:grid lg:grid-cols-2">
         <x-post-card />
         <x-post-card />
