@@ -1,5 +1,5 @@
 <!-- <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6"> -->
-@props(['posts'])
+@props(["posts"])
 <article
                 class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
                 <div class="py-6 px-5 lg:flex">
@@ -25,18 +25,18 @@
                                 </h1>
 
                                 <span class="mt-2 block text-gray-400 text-xs">
-                                        Published <time>{{$posts->published_at}}</time>
+                                        Published <time>{{$posts->created_at->diffForHumans()}}</time>
                                     </span>
                             </div>
                         </header>
 
                         <div class="text-sm mt-2">
                             <p>
-                                {{$posts->body}}
+                                {{$posts->excerpt}}
                             </p>
 
                             <p class="mt-4">
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                <!-- Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. -->
                             </p>
                         </div>
 
@@ -44,8 +44,8 @@
                             <div class="flex items-center text-sm">
                                 <img src="./images/lary-avatar.svg" alt="Lary avatar">
                                 <div class="ml-3">
-                                    <h5 class="font-bold">Lary Laracore</h5>
-                                    <h6>Mascot at Laracasts</h6>
+                                    <h5 class="font-bold">{{$posts->author}}</h5>
+                                    <h6>CATEGORY: {{$posts->category->name}}</h6>
                                 </div>
                             </div>
 
