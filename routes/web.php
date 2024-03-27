@@ -17,4 +17,5 @@ Route::get('session',[App\Http\Controllers\SessionController::class,'create'])->
 Route::post('session',[App\Http\Controllers\SessionController::class,'check'])->middleware('guest');
 Route::get('create/post',[App\Http\Controllers\PostCreateController::class,'create']);
 Route::post('create/post',[App\Http\Controllers\PostCreateController::class,'posting']);
-
+Route::get('category/{slug}',[App\Http\Controllers\CategoryCreateController::class,'show']);
+// category/{{$post->category->slug}

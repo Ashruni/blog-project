@@ -29,7 +29,7 @@ class SessionController extends Controller
         $dataS= DB::table('posts')->where('user_id', '=', auth()->user()->id)->get();
         // DD($data);
         session()->regenerate();
-            return redirect('/')->with('success','Welcome Back' )->with('dataS',$dataS);
+            return redirect('/')->with('success','Welcome Back' )->with('',$dataS);
 
 
     }

@@ -28,9 +28,8 @@ class PostCreateController extends Controller
         $details['user_id']=auth()->id();
         $posts=Post::create($details);
         return redirect("/")->with('success','SUCCESSFULLY POSTED');
-
-
-
-
+    }
+    public function show(){
+        return view('dashboard');
     }
 }
