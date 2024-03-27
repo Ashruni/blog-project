@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\User;
+use App\Models\Post;
+use DB;
 class SessionController extends Controller
 {
     public function create(){
@@ -17,10 +19,18 @@ class SessionController extends Controller
             'email'=> ['required','unique:users,username'],
             'password'=> ['required','min:8','max:50'],
         ]);
-        if (auth()->attempt($credentials))
+        if (! auth()->attempt($credentials))
         {
-            return redirect('/')->with('success','Welcome Back' );
+            throw ValidationException::withMessages([
+                'email'=>'your provided credentials could not be verified'
+            ]);
         }
+        // $userId=auth()->user()->id;
+        $dataS= DB::table('posts')->where('user_id', '=', auth()->user()->id)->get();
+        // DD($data);
+        session()->regenerate();
+            return redirect('/')->with('success','Welcome Back' )->with('dataS',$dataS);
+
 
     }
 

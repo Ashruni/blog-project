@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Post;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -25,8 +27,16 @@ class RegisterController extends Controller
         $credentials['password']= bcrypt($credentials['password']);
         $user= User::create($credentials);
         auth()->login($user);
+        // DD();
+        $userId=auth()->user()->id;
         session()->flash('success','Your account has been created');
-        return redirect('/');
+
+        $dataS= DB::table('posts')->where('user_id', '=', auth()->user()->id)->get();
+
+        return redirect('/')
+            ->with('success','Welcome Back' )->with('dataS', $dataS);
+
+
 
 
 

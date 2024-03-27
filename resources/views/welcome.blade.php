@@ -1,11 +1,16 @@
 <x-layout>
     @include('_header-post')
     <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+
+
     <x-feature :posts="$posts[0]" />
+
     <div class="lg:grid lg:grid-cols-2">
+        @if(!auth()->user)
         @foreach ($posts->skip(1) as $post)
 
         @props(["post"])
+
 <article
                     class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
                     <div class="py-6 px-5">
@@ -16,19 +21,24 @@
                         <div class="mt-8 flex flex-col justify-between">
                             <header>
                                 <div class="space-x-2">
-                                    <a href="#"
+                                    <a href="/category/{{$post->category->slug}}"
                                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
-                                       style="font-size: 10px"></a>
-                                    <a href="#"
+                                       style="font-size: 10px">category</a>
+                                    <!-- <a href="#"
                                        class="px-3 py-1 border border-red-300 rounded-full text-red-300 text-xs uppercase font-semibold"
-                                       style="font-size: 10px"> nn</a>
+                                       style="font-size: 10px"> nn</a> -->
                                 </div>
+                                @else
+        foreach ($dataS as $data)
+            <a href="#" class="px-3 py-1 border border-red-300 rounded-full text-red-300 text-xs uppercase font-semibold"
+                                       style="font-size: 10px">{{$data->titile}}</a>
+                                       </div>
+
 
                                 <div class="mt-4">
                                     <h1 class="text-3xl">
                                        <h1></h1>
                                     </h1>
-
 
                                     <span class="mt-2 block text-gray-400 text-xs">
                                         Published <time>{{ $post->created_at->diffForHumans() }} </time>
@@ -37,13 +47,20 @@
 
                             </header>
 
+
                             <div class="text-sm mt-4">
+
                                 <p>
+                                    {{$post->user_id}}
                                     {{$post->excerpt}}
                                 </p>
 
-
                             </div>
+
+
+
+
+
 
 
                             <footer class="flex justify-between items-center mt-8">
@@ -71,8 +88,11 @@
 
 
         @endforeach
+        @endif
     </div>
+
 </main>
+
     <div class="lg:grid lg:grid-cols-3">
 
         <x-post-card />

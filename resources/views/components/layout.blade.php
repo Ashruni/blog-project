@@ -14,7 +14,7 @@
         <x-flash/>
             <div>
                 <a href="/">
-                    <img src="./images/logo.svg" alt="Laracasts Logo" width="165" height="16">
+                    <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
                 </a>
             </div>
 
@@ -26,14 +26,21 @@
                 <a href="/session" class="text-xs font-bold uppercase ml-2">login</a>
                 @endauth
                 @auth
+                <a href="/create/post" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                    what in your mind
+                </a>
+                @else
+                <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                    Subscribe for Updates
+                </a>
+                @endauth
+                @auth
                 <form method="post" action="logout" class="text-s font-semibold text-blue-500 ml-6">
                     @csrf
                     <button type="submit">Logout</button>
                 </form>
                 @endauth
-                <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-                    Subscribe for Updates
-                </a>
+
 
             </div>
         </nav>
