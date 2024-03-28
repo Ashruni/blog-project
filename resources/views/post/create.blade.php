@@ -2,8 +2,11 @@
     <section class="px-6 py-8">
         <main class="max-w-lg mx-auto mt-2 bg-gray-100 border border-gray-200 p-6 rounded-xl" >
             <h1 class="text-center font-bold text-xl">post something !</h1>
+
+
             <form method="POST" action="/create/post" class="mt-10">
                 @csrf
+
                <div class="mb-6">
                 <label class="block mb-2 uppercase font-bold text-s text-grey-700" for="title">Title</label>
                 <input class="border border-grey-400 p-2 w-full" type="text" name="title" id="title" value="{{ old('title') }}" required>
@@ -63,7 +66,10 @@
     @endif
 
             </form>
+            <a class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                                   style="font-size: 10px;color:blue;margin-left:500px;" href="/">BACK</a>
 
 </main>
+
     </section>
 </x-layout>

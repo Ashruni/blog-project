@@ -9,7 +9,7 @@
  @if($posts->count()>0)
     <x-feature :posts="$posts[0]" />
  @else
- <h1 style="text-align: center;">No post till date</h1>
+ <h1 style="text-align: center;">No posts now</h1>
  @endif
 
 @else
@@ -30,7 +30,7 @@
                         <div class="mt-8 flex flex-col justify-between">
                             <header>
                                 <div class="space-x-2">
-                                    <a href="/category/{{$post->category->slug}}"
+                                    <a href="category/{{$post->category->slug}}"
                                        class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
                                        style="font-size: 10px">{{$post->category->name}}</a>
                                 </div>
@@ -56,7 +56,7 @@
                             <div class="text-sm mt-4">
 
                                 <p>
-                                    {{$post->user_id}}
+                                    <!-- {{$post->user_id}} -->
                                     {{$post->excerpt}}
                                 </p>
 
@@ -71,7 +71,7 @@
                                 </div>
 
                                 <div>
-                                    <a href="#"
+                                    <a href="post/{{$post->slug}}"
                                        class="transition-colors duration-300 text-xs font-semibold bg-gray-200 hover:bg-gray-300 rounded-full py-2 px-8"
                                     >Read More</a>
                                 </div>
